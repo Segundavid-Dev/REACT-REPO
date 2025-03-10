@@ -21,7 +21,6 @@
 
   text-transform: uppercase;
   text-align: center;
-  font-size: 3.5rem;
   font-weight: 300;
   letter-spacing: 3px;
   position: relative;
@@ -69,7 +68,6 @@
 }
 
 .menu > p {
-  font-size: 1.5rem;
   text-align: center;
   line-height: 1.6;
   width: 80%;
