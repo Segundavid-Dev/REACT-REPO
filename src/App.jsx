@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 const messages = [
@@ -7,14 +8,18 @@ const messages = [
 ];
 
 function App() {
-  const step = 1;
+  const [step, setStep] = useState(1);
 
   function handlePrevious() {
-    alert("previous");
+    if (step > 1) {
+      setStep(step - 1);
+    }
   }
 
   function handleNext() {
-    alert("Next");
+    if (step < 3) {
+      setStep(step + 1);
+    }
   }
 
   return (
