@@ -50,6 +50,7 @@ input {
   border-radius: 10rem;
   font-weight: 700;
   cursor: pointer;
+  padding: 10px 20px;
 }
 
 .add-form button {
