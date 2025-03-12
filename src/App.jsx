@@ -1,44 +1,83 @@
-import { useState } from "react";
 import "./App.css";
+
+const initialItems = [
+  {
+    id: 1,
+    description: "Passports",
+    quantity: 2,
+    packed: false,
+  },
+  {
+    id: 2,
+    description: "Socks",
+    quantity: 12,
+    packed: false,
+  },
+  {
+    id: 3,
+    description: "Charger",
+    quantity: 6,
+    packed: true,
+  },
+];
 
 function App() {
   return (
-    <div className="container">
-      <Count />
+    <div className="app">
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
     </div>
   );
 }
 
-function Count() {
-  const [count, setCount] = useState(0);
+function Logo() {
+  return <h1>🌴Far Away 💼</h1>;
+}
 
-  const date = new Date("june 21 2027");
-  date.setDate(date.getDate() + count);
-
-  function handleNext() {
-    setCount(count + 1);
-  }
-
-  function handlePrevious() {
-    setCount(count - 1);
-    console.log(count);
-  }
+function Form() {
   return (
-    <div>
-      <button onClick={handlePrevious}>-</button>
-      <span>count:{count}</span>
-      <button onClick={handleNext}>+</button>
-      <p className="message">
-        <span>
-          {count === 0
-            ? `Today is `
-            : count > 0
-            ? `${count} days from today is `
-            : `${Math.abs(count)} days ago was`}
-        </span>
-        {date.toDateString()}
-      </p>
+    <div className="add-form">
+      <h3>What do you need for your trip?</h3>
     </div>
   );
 }
+
+function PackingList() {
+  return (
+    <div className="list">
+      <ul>
+        {initialItems.map((item) => (
+          <Items
+            item={item.description}
+            quantity={item.quantity}
+            packed={item.packed}
+            key={item.id}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Items({ item, quantity, packed }) {
+  return (
+    <li>
+      <span style={packed ? { textDecoration: "line-through" } : {}}>
+        {quantity} {item}
+      </span>
+      <button>❌</button>
+    </li>
+  );
+}
+
+function Stats() {
+  return (
+    <footer className="stats">
+      <p>You have X item on your list, and you already packed X(x%)</p>
+    </footer>
+  );
+}
+
 export default App;
