@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Logo from "./Logo";
-import Form from "./Form";
+import Form from "./form";
 import PackingList from "./PackingList";
 import Stats from "./Stats";
 
